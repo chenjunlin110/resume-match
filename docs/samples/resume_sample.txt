@@ -1,0 +1,21 @@
+姓名：张三
+职位：软件工程师
+
+技能：
+- Go编程语言
+- Python编程语言
+- Web框架：Gin, FastAPI
+- 数据库：PostgreSQL, MySQL
+- 容器化：Docker
+- 前端：React, TypeScript
+- CI/CD流程
+- 问题解决能力
+
+工作经验：
+- 3年Go后端开发经验
+- 2年Python机器学习项目经验
+- 熟悉微服务架构
+- 有代码审查和团队协作经验
+
+教育背景：
+- 计算机科学学士学位

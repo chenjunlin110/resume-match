@@ -1,0 +1,8 @@
+fastapi==0.115.*
+uvicorn==0.30.*
+pdfminer.six==20231228
+python-docx==1.1.*
+openai==1.*           # 仅当你要用 LLM 时
+flashtext==2.7
+PyYAML==6.*
+python-multipart==0.0.9

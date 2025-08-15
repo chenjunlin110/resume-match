@@ -1,0 +1,137 @@
+aliases:
+  golang: Go
+  go: Go
+  cpp: C++
+  "c#": C#
+  dotnet: .NET
+  ".net": .NET
+  node: Node.js
+  nodejs: Node.js
+  "node.js": Node.js
+  js: JavaScript
+  ts: TypeScript
+  k8s: Kubernetes
+  postgres: PostgreSQL
+  postgresql: PostgreSQL
+  elastic: Elasticsearch
+  es: Elasticsearch
+
+skills:
+  Languages:
+    - Python
+    - Go
+    - Java
+    - C++
+    - C
+    - C#
+    - JavaScript
+    - TypeScript
+    - Rust
+    - Kotlin
+    - Swift
+    - PHP
+    - Ruby
+    - Scala
+    - R
+    - MATLAB
+    - Bash
+  Frontend:
+    - React
+    - Vue.js
+    - Angular
+    - Svelte
+    - Next.js
+    - Redux
+    - Tailwind CSS
+    - Webpack
+    - Vite
+  Backend:
+    - Spring Boot
+    - Django
+    - Flask
+    - FastAPI
+    - Gin
+    - Express
+    - NestJS
+    - Laravel
+    - .NET
+    - ASP.NET Core
+    - GraphQL
+    - gRPC
+    - REST
+  Databases:
+    - PostgreSQL
+    - MySQL
+    - SQLite
+    - MariaDB
+    - Oracle
+    - SQL Server
+    - MongoDB
+    - Redis
+    - DynamoDB
+    - Cassandra
+    - Elasticsearch
+    - ClickHouse
+    - Snowflake
+    - BigQuery
+    - Redshift
+  DevOps:
+    - Docker
+    - Kubernetes
+    - Helm
+    - Terraform
+    - Ansible
+    - Jenkins
+    - GitHub Actions
+    - GitLab CI
+    - CircleCI
+    - Argo CD
+    - Prometheus
+    - Grafana
+    - ELK
+    - Nginx
+    - Istio
+  DataEngineering:
+    - Apache Spark
+    - Hadoop
+    - Kafka
+    - Flink
+    - Airflow
+    - Beam
+    - Hive
+    - Presto
+    - Trino
+    - dbt
+  ML_DL:
+    - PyTorch
+    - TensorFlow
+    - Keras
+    - scikit-learn
+    - XGBoost
+    - LightGBM
+    - Hugging Face Transformers
+    - ONNX
+    - MLflow
+    - Ray
+    - JAX
+    - NumPy
+    - Pandas
+  Mobile:
+    - Android
+    - iOS
+    - React Native
+    - Flutter
+    - SwiftUI
+  Messaging:
+    - RabbitMQ
+    - ActiveMQ
+    - SQS
+    - Pub/Sub
+  Security:
+    - OAuth2
+    - OpenID Connect
+    - JWT
+    - TLS
+    - OWASP
+    - Penetration Testing
+    - Vulnerability Assessment

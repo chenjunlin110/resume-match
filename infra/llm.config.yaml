@@ -1,0 +1,8 @@
+model_list:
+  - model_name: "ollama/llama3.1:8b"
+    litellm_params:
+      model: "ollama/llama3.1:8b"
+      api_base: "http://ollama:11434"
+      api_key: "sk-ollama"
+general_settings:
+  master_key: "sk-any"

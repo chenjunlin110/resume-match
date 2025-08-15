@@ -1,0 +1,87 @@
+services:
+  # 1) Ollama（推理引擎）- GPU加速版本
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_ORIGINS=*
+      - OLLAMA_GPU_LAYERS=35  # 启用GPU加速层
+      - OLLAMA_FLASH_ATTENTION=true  # 启用Flash Attention优化
+      - OLLAMA_METAL=1  # 启用Apple Metal GPU加速
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/bin/ollama", "--version"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  # 2) OpenAI 兼容代理（LiteLLM）
+  llm:
+    image: ghcr.io/berriai/litellm:main-latest
+    command:
+      [
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8001",
+        "--config",
+        "/config.yaml",
+        "--num_workers",
+        "2",
+      ]
+    ports: ["8001:8001"]
+    volumes:
+      - ./llm.config.yaml:/config.yaml:ro
+    depends_on:
+      ollama:
+        condition: service_started # ← 只等启动即可，别再等 healthy
+
+  # 3) 你的 ML 服务（FastAPI）
+  ml:
+    build:
+      context: ..
+      dockerfile: ml_service/Dockerfile
+    environment:
+      - LLM_BASE_URL=http://llm:8001/v1
+      - LLM_MODEL=ollama/llama3.1:8b
+      - LLM_API_KEY=sk-any
+      - SKILLS_PATH=app/ml_service/skills.yaml
+    volumes:
+      - ../ml_service:/app/ml_service:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      llm:
+        condition: service_started
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - ML_URL=http://ml:8000/api/score_file_stream
+    ports:
+      - "8080:8080"
+    depends_on:
+      ml:
+        condition: service_started
+
+  # 前端服务
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8080
+    depends_on:
+      backend:
+        condition: service_started
+
+volumes:
+  ollama:
