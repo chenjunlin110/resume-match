@@ -218,6 +218,7 @@ resume-match/
 └── README.md                # This file
 ```
 
+
 ## 🔒 Security & Privacy
 
 - **Local LLM**: All AI processing happens locally via Ollama
@@ -226,7 +227,6 @@ resume-match/
 - **CORS Configuration**: Proper cross-origin resource sharing setup
 
 
-```
 
 ## 🤝 Contributing
 
@@ -251,7 +251,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/chenjunlin110/resume-match/issues)
-- **Connect**: [Gmail] (chenjunlin110@gmail.com)
+- **Connect**: [Gmail](chenjunlin110@gmail.com)
 
 ---
 
