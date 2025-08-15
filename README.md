@@ -218,6 +218,7 @@ resume-match/
 └── README.md                # This file
 ```
 
+
 ## 🔒 Security & Privacy
 
 - **Local LLM**: All AI processing happens locally via Ollama
@@ -225,43 +226,7 @@ resume-match/
 - **File Handling**: Secure file upload and processing
 - **CORS Configuration**: Proper cross-origin resource sharing setup
 
-## 🐛 Troubleshooting
 
-### Common Issues
-
-1. **Services not starting**
-   ```bash
-   docker compose down
-   docker compose up -d
-   ```
-
-2. **Port conflicts**
-   - Check if ports 3000, 8080, 8000, or 11434 are in use
-   - Modify port mappings in docker-compose files
-
-3. **GPU acceleration not working**
-   - Ensure you're on macOS with Apple Silicon
-   - Check Ollama logs for GPU-related errors
-
-4. **Frontend can't connect to backend**
-   - Verify Docker services are running
-   - Check browser console for CORS errors
-   - Ensure correct API URL configuration
-
-### Logs and Debugging
-
-```bash
-# View all service logs
-docker compose logs
-
-# View specific service logs
-docker compose logs backend
-docker compose logs ml
-docker compose logs ollama
-
-# Follow logs in real-time
-docker compose logs -f
-```
 
 ## 🤝 Contributing
 
@@ -286,7 +251,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/chenjunlin110/resume-match/issues)
-- **Connect**: [Gmail] (chenjunlin110@gmail.com)
+- **Connect**: [Gmail](chenjunlin110@gmail.com)
 
 ---
 
