@@ -9,9 +9,9 @@ services:
     environment:
       - OLLAMA_HOST=0.0.0.0
       - OLLAMA_ORIGINS=*
-      - OLLAMA_GPU_LAYERS=35  # 启用GPU加速层
-      - OLLAMA_FLASH_ATTENTION=true  # 启用Flash Attention优化
-      - OLLAMA_METAL=1  # 启用Apple Metal GPU加速
+      - OLLAMA_GPU_LAYERS=35 # 启用GPU加速层
+      - OLLAMA_FLASH_ATTENTION=true # 启用Flash Attention优化
+      - OLLAMA_METAL=1 # 启用Apple Metal GPU加速
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "/bin/ollama", "--version"]
@@ -64,24 +64,39 @@ services:
       dockerfile: Dockerfile
     environment:
       - ML_URL=http://ml:8000/api/score_file_stream
+      - DATABASE_URL=postgres://resume:resume@db:5432/resume?sslmode=disable
+      - DB_DSN=host=db user=resume password=resume dbname=resume port=5432 sslmode=disable TimeZone=UTC
+      - JWT_SECRET=change_me
+      - UPLOAD_DIR=/data/uploads
+      - MAX_UPLOAD_MB=12
+      - CORS_ALLOW_ORIGINS=http://localhost:3000
     ports:
       - "8080:8080"
     depends_on:
       ml:
         condition: service_started
+      db:
+        condition: service_healthy
+    volumes:
+      - backend_uploads:/data/uploads
 
-  # 前端服务
-  frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+  db:
+    image: postgres:15
     environment:
-      - VITE_API_URL=http://localhost:8080
-    depends_on:
-      backend:
-        condition: service_started
+      - POSTGRES_USER=resume
+      - POSTGRES_PASSWORD=resume
+      - POSTGRES_DB=resume
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resume -d resume"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   ollama:
+  pgdata:
+  backend_uploads:
